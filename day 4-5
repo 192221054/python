@@ -1,0 +1,15 @@
+def minj(arr,I,h):
+    if(h==I):
+        return 0
+    if (arr[I]==0):
+        return float('inf')
+    min=float('inf')
+    for i in range(I+1,h+1):
+        if(i<I+arr[I]+1):
+            jumps=minj(arr,i,h)
+            if(jumps!=float('inf') and jumps+1<min):
+                min=jumps+1
+    return min
+arr=[2,3,0,1,4]
+n=len(arr)
+print('minimum number of jumps to reach','end is',minj(arr,0,n-1))
